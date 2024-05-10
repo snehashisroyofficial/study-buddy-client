@@ -1,8 +1,37 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import useAuth from "../../Hooks/useAuth";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { updateProfile } from "firebase/auth";
+import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 const Register = () => {
   const [button, setButton] = useState(true);
+  const { createUser } = useAuth();
+  const [password, setPassword] = useState(false);
+  const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{6,}$/;
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const handleOnSubmit = (data) => {
+    const { fullName, email, url, password } = data;
+
+    createUser(email, password)
+      .then((res) => {
+        updateProfile(res.user, {
+          displayName: fullName,
+          photoURL: url,
+        });
+
+        toast.success("account created successfully");
+        reset();
+      })
+      .catch(() => toast.error("something went wrong"));
+  };
 
   return (
     <section className="bg-white dark:bg-gray-900">
@@ -20,7 +49,10 @@ const Register = () => {
               </p>
             </div>
 
-            <form className="flex flex-col space-y-6">
+            <form
+              onSubmit={handleSubmit(handleOnSubmit)}
+              className="flex flex-col space-y-6"
+            >
               {/* col 1 */}
               <div>
                 <label
@@ -32,9 +64,16 @@ const Register = () => {
                 <input
                   type="text"
                   id="fullName"
+                  name="fullName"
                   placeholder="Enter your Full Name"
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200  dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  {...register("fullName", { required: true })}
                 />
+                {errors.fullName && (
+                  <span className="text-red-500 text-sm">
+                    This field is required
+                  </span>
+                )}
               </div>
 
               {/* col 2  */}
@@ -47,10 +86,17 @@ const Register = () => {
                 </label>
                 <input
                   type="email"
+                  name="email"
                   id="emailAddress"
                   placeholder="Enter your Email Address"
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200  dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  {...register("email", { required: true })}
                 />
+                {errors.email && (
+                  <span className="text-red-500 text-sm">
+                    This field is required
+                  </span>
+                )}
               </div>
 
               {/* col 3  */}
@@ -64,13 +110,20 @@ const Register = () => {
                 <input
                   type="url"
                   id="photoURL"
+                  name="url"
                   placeholder="https://"
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200  dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  {...register("url", { required: true })}
                 />
+                {errors.url && (
+                  <span className="text-red-500 text-sm">
+                    This field is required
+                  </span>
+                )}
               </div>
 
               {/* col 4  */}
-              <div>
+              <div className="relative">
                 <label
                   htmlFor="registerPassword"
                   className="block mb-2 text-sm text-gray-600 dark:text-gray-200"
@@ -78,23 +131,38 @@ const Register = () => {
                   Password
                 </label>
                 <input
-                  type="password"
+                  type={password ? "text" : "password"}
                   id="registerPassword"
+                  name="password"
                   placeholder="Enter your Password"
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200  dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  {...register("password", {
+                    required: true,
+                    pattern: {
+                      value: passwordRegex,
+                      message:
+                        "Password must contain at least 6 characters, one uppercase letter, one lowercase letter, one special characters and one digit",
+                    },
+                  })}
                 />
+                <span
+                  className="absolute bottom-4 right-4 text-lg"
+                  onClick={() => setPassword(!password)}
+                >
+                  {password ? <FaEyeSlash /> : <FaRegEye />}
+                </span>
               </div>
+              {errors.password && (
+                <span className="text-red-500 text-sm">
+                  {errors.password.message}
+                </span>
+              )}
 
               {/* col 5  */}
               <div>
                 <small>
                   <span className="mr-2">
-                    <input
-                      onClick={() => setButton(!button)}
-                      type="checkbox"
-                      name=""
-                      id=""
-                    />
+                    <input onClick={() => setButton(!button)} type="checkbox" />
                   </span>
                   We want you to know exactly how our service works and why we
                   need your details. Please confirm that you have read,
@@ -103,9 +171,10 @@ const Register = () => {
               </div>
 
               <button
-                disabled
+                type="submit"
+                disabled={button}
                 className={` w-full ${
-                  button ? " disabled:opacity-20 " : "block"
+                  button ? "opacity-20 " : "block"
                 } px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500  hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50`}
               >
                 Sign Up
