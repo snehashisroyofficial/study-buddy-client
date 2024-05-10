@@ -30,7 +30,7 @@ const Register = () => {
         toast.success("account created successfully");
         reset();
       })
-      .catch(() => toast.error("something went wrong"));
+      .catch((err) => toast.error(err.message));
   };
 
   return (
