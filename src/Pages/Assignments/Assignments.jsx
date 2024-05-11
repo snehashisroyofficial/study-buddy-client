@@ -10,7 +10,7 @@ const Assignments = () => {
         {data.map((item) => (
           <div
             key={item._id}
-            className="w-full border-2  border-gray-400 max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800"
+            className="w-full border-2  border-black max-w-xs overflow-hidden bg-white shadow-lg dark:bg-gray-800"
           >
             <img
               className="object-cover w-full h-56"

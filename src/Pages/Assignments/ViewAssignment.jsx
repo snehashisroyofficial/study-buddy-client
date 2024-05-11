@@ -2,9 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { BsCalendarDate } from "react-icons/bs";
 import { IoIosBookmarks } from "react-icons/io";
 import { IoBarChart } from "react-icons/io5";
-import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
-import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { RotatingLines } from "react-loader-spinner";
 
@@ -28,27 +26,33 @@ const ViewAssignment = () => {
 
   const formattedDate = new Date(date).toLocaleDateString();
 
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      email: user?.email,
-      name: user?.displayName,
-    },
-  });
-
-  useEffect(() => {
-    if (user && !loading) {
-      setValue("email", user?.email);
-      setValue("name", user?.displayName);
-    }
-  }, [user, loading, setValue]);
-
-  const handleOnModal = (data) => {
-    console.log(data);
+  const handleOnModal = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const assignmentId = data?._id;
+    const displayName = user?.displayName;
+    const emailAddress = user?.email;
+    const marks = data?.marks;
+    const difficulty = data?.difficulty;
+    const title = data?.title;
+    const status = "pending";
+    const submitLink = form.link.value;
+    const buyerDetails = {
+      name: data?.buyerName,
+      email: data?.emailAddress,
+    };
+    const submitData = {
+      assignmentId,
+      displayName,
+      emailAddress,
+      marks,
+      difficulty,
+      title,
+      status,
+      submitLink,
+      buyerDetails,
+    };
+    console.log(submitData);
   };
 
   if (loading) {
@@ -89,6 +93,7 @@ const ViewAssignment = () => {
               <div>
                 <p className="flex items-center gap-2">
                   <BsCalendarDate />
+                  <span className="font-semibold">Due Date: </span>
                   {formattedDate}
                 </p>
               </div>
@@ -135,73 +140,20 @@ const ViewAssignment = () => {
                   Submit Your Assignment
                 </h1>
                 <form
-                  onSubmit={handleSubmit(handleOnModal)}
+                  method="dialog"
+                  onSubmit={handleOnModal}
                   className="space-y-6"
                 >
-                  {/* your Name  */}
+                  {/* paste your doc link  */}
                   <div>
-                    <label
-                      className="text-gray-700 dark:text-gray-200"
-                      htmlFor="name"
-                    >
-                      Your Name
-                    </label>
-                    <input
-                      id="name"
-                      type="text"
-                      disabled
-                      name="name"
-                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                      {...register("name")}
-                    />
-                    {errors.name && (
-                      <span className="text-red-500 text-sm">
-                        This field is required
-                      </span>
-                    )}
-                  </div>
-                  {/* your email address  */}
-                  <div>
-                    <label
-                      className="text-gray-700 dark:text-gray-200"
-                      htmlFor="email"
-                    >
-                      Your Email Address
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      disabled
-                      name="email"
-                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                      {...register("email")}
-                    />
-                    {errors.email && (
-                      <span className="text-red-500 text-sm">
-                        This field is required
-                      </span>
-                    )}
-                  </div>
-                  {/* paste your Doc/pdf link  */}
-                  <div>
-                    <label
-                      className="text-gray-700 dark:text-gray-200"
-                      htmlFor="link"
-                    >
-                      Title
-                    </label>
                     <input
                       id="link"
                       type="link"
+                      name="link"
+                      required
                       placeholder="Paste your doc/pdf link"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                      {...register("title", { required: true })}
                     />
-                    {errors.title && (
-                      <span className="text-red-500 text-sm">
-                        This field is required
-                      </span>
-                    )}
                   </div>
 
                   <div className="flex justify-center">
