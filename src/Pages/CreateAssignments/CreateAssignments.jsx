@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const CreateAssignments = () => {
   const { user, loading } = useAuth();
@@ -29,7 +31,13 @@ const CreateAssignments = () => {
   }, [user, reset]);
 
   const handleOnPost = (data) => {
-    reset();
+    axios
+      .post("http://localhost:5000/create", data)
+      .then(() => {
+        toast.success("assignment post successfully");
+        reset();
+      })
+      .catch((err) => toast.error(err.message));
   };
 
   if (loading) {
