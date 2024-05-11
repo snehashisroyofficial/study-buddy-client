@@ -15,6 +15,7 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const auth = getAuth(app);
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const googleProvider = new GoogleAuthProvider();
   //create new user using email
@@ -40,6 +41,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
+      setLoading(false);
     });
 
     return () => {
@@ -47,7 +49,14 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const authInfo = { createUser, signInUser, user, logOut, googleLogin };
+  const authInfo = {
+    createUser,
+    signInUser,
+    user,
+    logOut,
+    googleLogin,
+    loading,
+  };
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
