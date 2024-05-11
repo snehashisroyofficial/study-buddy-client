@@ -7,6 +7,7 @@ import CreateAssignments from "../Pages/CreateAssignments/CreateAssignments";
 import Assignments from "../Pages/Assignments/Assignments";
 import PrivateRoutes from "./PrivateRoutes";
 import ViewAssignment from "../Pages/Assignments/ViewAssignment";
+import MySubmittedAssignments from "../Pages/Assignments/MySubmittedAssignments/MySubmittedAssignments";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
         element: <ViewAssignment />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/view-assignment/${params.id}`),
+      },
+      {
+        path: "/my-submitted-assignments",
+        element: <MySubmittedAssignments />,
       },
     ],
   },

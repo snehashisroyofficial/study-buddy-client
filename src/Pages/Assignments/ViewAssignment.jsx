@@ -1,16 +1,19 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { BsCalendarDate } from "react-icons/bs";
 import { IoIosBookmarks } from "react-icons/io";
 import { IoBarChart } from "react-icons/io5";
 import useAuth from "../../Hooks/useAuth";
 import { useEffect } from "react";
 import { RotatingLines } from "react-loader-spinner";
+import axios from "axios";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const ViewAssignment = () => {
   const { user, loading } = useAuth();
 
   const data = useLoaderData();
-
+  const navigate = useNavigate();
   const {
     date,
     description,
@@ -32,10 +35,12 @@ const ViewAssignment = () => {
     const assignmentId = data?._id;
     const displayName = user?.displayName;
     const emailAddress = user?.email;
-    const marks = data?.marks;
+    const marks = parseFloat(data?.marks);
     const difficulty = data?.difficulty;
     const title = data?.title;
     const status = "pending";
+    const obtainedMarks = "";
+    const feedBack = "";
     const submitLink = form.link.value;
     const buyerDetails = {
       name: data?.buyerName,
@@ -46,6 +51,8 @@ const ViewAssignment = () => {
       displayName,
       emailAddress,
       marks,
+      obtainedMarks,
+      feedBack,
       difficulty,
       title,
       status,
@@ -53,6 +60,19 @@ const ViewAssignment = () => {
       buyerDetails,
     };
     console.log(submitData);
+
+    axios
+      .post("http://localhost:5000/submit-assignment", submitData)
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Assignment Submited Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/my-submitted-assignments");
+      })
+      .catch((error) => toast.error(error.message));
   };
 
   if (loading) {
