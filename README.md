@@ -5,6 +5,7 @@
 "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocK1dIzNbSitWcVqPbwSFTfCuukOe0yWXy2kwtCsIXq8DN3_E94=s96-c",
 "url": "https://i.ibb.co/yggH3w4/image.png",
 "emailAddress": "bongradar@gmail.com",
+"buyerName": "Snehashis Roy",
 "date": "2024-04-09T12:37:26.000Z",
 "marks": 100,
 "difficulty": "medium"
@@ -15,6 +16,7 @@
 "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocK1dIzNbSitWcVqPbwSFTfCuukOe0yWXy2kwtCsIXq8DN3_E94=s96-c",
 "url": "https://i.ibb.co/tPr3Rn7/image.png",
 "emailAddress": "bongradar@gmail.com",
+"buyerName": "Snehashis Roy",
 "date": "2024-04-09T12:37:26.000Z",
 "marks": 100,
 "difficulty": "medium"
@@ -25,6 +27,7 @@
 "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocK1dIzNbSitWcVqPbwSFTfCuukOe0yWXy2kwtCsIXq8DN3_E94=s96-c",
 "url": "https://i.ibb.co/rQpDdt5/image.png",
 "emailAddress": "bongradar@gmail.com",
+"buyerName": "Snehashis Roy",
 "date": "2024-04-09T12:37:26.000Z",
 "marks": 100,
 "difficulty": "hard"
@@ -35,6 +38,7 @@
 "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocK1dIzNbSitWcVqPbwSFTfCuukOe0yWXy2kwtCsIXq8DN3_E94=s96-c",
 "url": "https://i.ibb.co/3Sb4GKr/image.png",
 "emailAddress": "bongradar@gmail.com",
+"buyerName": "Snehashis Roy",
 "date": "2024-04-09T12:37:26.000Z",
 "marks": 100,
 "difficulty": "medium"
@@ -45,6 +49,7 @@
 "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocK1dIzNbSitWcVqPbwSFTfCuukOe0yWXy2kwtCsIXq8DN3_E94=s96-c",
 "url": "https://i.ibb.co/P9xG7LM/image.png",
 "emailAddress": "bongradar@gmail.com",
+"buyerName": "Snehashis Roy",
 "date": "2024-04-09T12:37:26.000Z",
 "marks": 100,
 "difficulty": "hard"
@@ -55,6 +60,7 @@
 "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocK1dIzNbSitWcVqPbwSFTfCuukOe0yWXy2kwtCsIXq8DN3_E94=s96-c",
 "url": "https://i.ibb.co/C8vsfzK/image.png",
 "emailAddress": "bongradar@gmail.com",
+"buyerName": "Snehashis Roy",
 "date": "2024-04-09T12:37:26.000Z",
 "marks": 100,
 "difficulty": "medium"
@@ -65,6 +71,7 @@
 "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocK1dIzNbSitWcVqPbwSFTfCuukOe0yWXy2kwtCsIXq8DN3_E94=s96-c",
 "url": "https://i.ibb.co/2P1z3kL/image.png",
 "emailAddress": "bongradar@gmail.com",
+"buyerName": "Snehashis Roy",
 "date": "2024-04-09T12:37:26.000Z",
 "marks": 100,
 "difficulty": "easy"
@@ -75,6 +82,7 @@
 "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocK1dIzNbSitWcVqPbwSFTfCuukOe0yWXy2kwtCsIXq8DN3_E94=s96-c",
 "url": "https://i.ibb.co/Z86Dw6X/image.png",
 "emailAddress": "bongradar@gmail.com",
+"buyerName": "Snehashis Roy",
 "date": "2024-04-09T12:37:26.000Z",
 "marks": 100,
 "difficulty": "medium"
@@ -85,6 +93,7 @@
 "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocK1dIzNbSitWcVqPbwSFTfCuukOe0yWXy2kwtCsIXq8DN3_E94=s96-c",
 "url": "https://i.ibb.co/gvtvt8R/image.png",
 "emailAddress": "bongradar@gmail.com",
+"buyerName": "Snehashis Roy",
 "date": "2024-04-09T12:37:26.000Z",
 "marks": 100,
 "difficulty": "hard"
@@ -95,6 +104,7 @@
 "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocK1dIzNbSitWcVqPbwSFTfCuukOe0yWXy2kwtCsIXq8DN3_E94=s96-c",
 "url": "https://i.ibb.co/0ZPsVsz/image.png",
 "emailAddress": "bongradar@gmail.com",
+"buyerName": "Snehashis Roy",
 "date": "2024-04-09T12:37:26.000Z",
 "marks": 100,
 "difficulty": "medium"

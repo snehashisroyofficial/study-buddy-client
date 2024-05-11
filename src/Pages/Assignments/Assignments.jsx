@@ -1,9 +1,8 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Assignments = () => {
   const data = useLoaderData();
 
-  console.log(data[1].difficulty);
   return (
     <div className="py-10">
       <h1 className="text-3xl font-bold text-center mb-8">All Assignments</h1>
@@ -35,10 +34,11 @@ const Assignments = () => {
                   <p>{item?.difficulty}</p>
                 </div>
               </div>
-              <button className="capitalize btn   bg-blue-300 hover:bg-blue-700 hover:text-white w-full text-center text-lg">
-                view assignment
-              </button>
-              <p></p>
+              <Link to={`/view-assignment/${item._id}`}>
+                <button className="capitalize btn mt-4    bg-blue-300 hover:bg-blue-700 hover:text-white w-full text-center text-lg">
+                  view assignment
+                </button>
+              </Link>
             </div>
           </div>
         ))}

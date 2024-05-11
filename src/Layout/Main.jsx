@@ -8,7 +8,7 @@ const Main = () => {
       <div className="bg-orange-100 sticky z-10 top-0">
         <Navbar />
       </div>
-      <div className="max-w-6xl min-h-[calc(100vh-317px)] mx-auto p-4 ">
+      <div className="max-w-6xl min-h-[calc(100vh-317px)] mx-auto  ">
         <Outlet />
       </div>
       <Footer />

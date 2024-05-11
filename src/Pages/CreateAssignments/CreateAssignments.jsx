@@ -9,7 +9,8 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 
 const CreateAssignments = () => {
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
+
   const [startDate, setStartDate] = useState(new Date());
 
   const {
@@ -21,6 +22,7 @@ const CreateAssignments = () => {
     defaultValues: {
       emailAddress: user?.email,
       photoURL: user?.photoURL,
+      buyerName: user?.displayName,
     },
   });
 
@@ -29,6 +31,7 @@ const CreateAssignments = () => {
       reset({
         emailAddress: user?.email,
         photoURL: user?.photoURL,
+        buyerName: user?.displayName,
       });
     }
   }, [user, reset]);
@@ -48,9 +51,6 @@ const CreateAssignments = () => {
       .catch((err) => toast.error(err.message));
   };
 
-  if (loading) {
-    return <div>Loading .....</div>;
-  }
   return (
     <section className="py-10">
       <div className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800 border">
@@ -125,7 +125,7 @@ const CreateAssignments = () => {
               )}
             </div>
 
-            {/* due dates       */}
+            {/* due dates */}
             <div>
               <label
                 className="text-gray-700 dark:text-gray-200"
@@ -133,7 +133,7 @@ const CreateAssignments = () => {
               >
                 Due Date
               </label>
-              <div className="w-full">
+              <div>
                 <DatePicker
                   id="dueDate"
                   className="block w-full px-6 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
@@ -173,6 +173,23 @@ const CreateAssignments = () => {
               )}
             </div>
 
+            {/* buyer photo url  */}
+            <div>
+              <label
+                className="text-gray-700 dark:text-gray-200"
+                htmlFor="photoURL"
+              >
+                Buyer Photo URL
+              </label>
+              <input
+                id="photoURL"
+                type="photoURL"
+                disabled
+                name="photoURL"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                {...register("photoURL")}
+              />
+            </div>
             {/* email address  */}
             <div>
               <label
@@ -190,21 +207,21 @@ const CreateAssignments = () => {
                 {...register("emailAddress")}
               />
             </div>
-            {/* email address  */}
+            {/* Buyer Name */}
             <div>
               <label
                 className="text-gray-700 dark:text-gray-200"
-                htmlFor="photoURL"
+                htmlFor="buyerName"
               >
-                Buyer Photo URL
+                Buyer Email Address
               </label>
               <input
-                id="photoURL"
-                type="photoURL"
+                id="buyerName"
+                type="text"
                 disabled
-                name="photoURL"
+                name="buyerName"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                {...register("photoURL")}
+                {...register("buyerName")}
               />
             </div>
           </div>
