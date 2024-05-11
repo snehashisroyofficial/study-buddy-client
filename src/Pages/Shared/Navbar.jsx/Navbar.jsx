@@ -7,16 +7,19 @@ const Navbar = () => {
 
   const navlinks = (
     <>
-      <li>
-        <NavLink to="/">Home</NavLink>
+      <li className="p-2 active:bg-green-500">
+        <NavLink className="active:text-blue-500" to="/">
+          Home
+        </NavLink>
       </li>
-      <li>
+
+      <li className="p-2 bg-red-200">
         <NavLink to="/assignments">Assignments</NavLink>
       </li>
-      <li>
+      <li className="p-2 bg-red-200">
         <NavLink to="/create-assignments">Create Assignments</NavLink>
       </li>
-      <li>
+      <li className="p-2 bg-red-200">
         <NavLink to="/pendingassignments">Pending Assignments</NavLink>
       </li>
     </>
@@ -48,7 +51,9 @@ const Navbar = () => {
         <a className="btn btn-ghost text-xl">Study Buddy</a>
       </div>
       <div className="navbar-center hidden lg:flex font-semibold ">
-        <ul className="menu menu-horizontal px-1 text-base">{navlinks}</ul>
+        <ul className=" menu-horizontal px-1 text-base space-x-3">
+          {navlinks}
+        </ul>
       </div>
       <div className="navbar-end space-x-6 ">
         {/* circle avatar section  */}
