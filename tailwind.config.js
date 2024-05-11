@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        Lato: "'Lato', sans-serif",
+        body: ["Nunito"],
       },
     },
   },
