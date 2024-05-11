@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const CreateAssignments = () => {
   const { user, loading } = useAuth();
@@ -19,6 +20,7 @@ const CreateAssignments = () => {
   } = useForm({
     defaultValues: {
       emailAddress: user?.email,
+      photoURL: user?.photoURL,
     },
   });
 
@@ -26,6 +28,7 @@ const CreateAssignments = () => {
     if (user) {
       reset({
         emailAddress: user?.email,
+        photoURL: user?.photoURL,
       });
     }
   }, [user, reset]);
@@ -34,7 +37,12 @@ const CreateAssignments = () => {
     axios
       .post("http://localhost:5000/create", data)
       .then(() => {
-        toast.success("assignment post successfully");
+        Swal.fire({
+          icon: "success",
+          title: "Assignment created successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         reset();
       })
       .catch((err) => toast.error(err.message));
@@ -63,6 +71,7 @@ const CreateAssignments = () => {
               <input
                 id="title"
                 type="text"
+                placeholder="Enter Assignment Title"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                 {...register("title", { required: true })}
               />
@@ -71,23 +80,6 @@ const CreateAssignments = () => {
                   This field is required
                 </span>
               )}
-            </div>
-            {/* email address  */}
-            <div>
-              <label
-                className="text-gray-700 dark:text-gray-200"
-                htmlFor="emailAddress"
-              >
-                Email Address
-              </label>
-              <input
-                id="emailAddress"
-                type="email"
-                disabled
-                name="emailAddress"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                {...register("emailAddress")}
-              />
             </div>
 
             {/* image url  */}
@@ -159,26 +151,61 @@ const CreateAssignments = () => {
             <div>
               <label
                 className="text-gray-700 dark:text-gray-200"
-                htmlFor="difficulty-level"
+                htmlFor="difficulty"
               >
                 Difficulty Level
               </label>
 
               <select
                 id="difficulty-level"
-                name="option"
+                name="difficulty"
                 className="block w-full px-6 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                {...register("option", { required: true })}
+                {...register("difficulty", { required: true })}
               >
                 <option value="easy">Easy</option>
                 <option value="medium">Medium</option>
                 <option value="hard">Hard</option>
               </select>
-              {errors.option && (
+              {errors.difficulty && (
                 <span className="text-red-500 text-sm">
                   This field is required
                 </span>
               )}
+            </div>
+
+            {/* email address  */}
+            <div>
+              <label
+                className="text-gray-700 dark:text-gray-200"
+                htmlFor="emailAddress"
+              >
+                Buyer Email Address
+              </label>
+              <input
+                id="emailAddress"
+                type="email"
+                disabled
+                name="emailAddress"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                {...register("emailAddress")}
+              />
+            </div>
+            {/* email address  */}
+            <div>
+              <label
+                className="text-gray-700 dark:text-gray-200"
+                htmlFor="photoURL"
+              >
+                Buyer Photo URL
+              </label>
+              <input
+                id="photoURL"
+                type="photoURL"
+                disabled
+                name="photoURL"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                {...register("photoURL")}
+              />
             </div>
           </div>
 

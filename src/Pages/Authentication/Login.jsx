@@ -1,6 +1,6 @@
 import { MdEmail } from "react-icons/md";
 import { FaEyeSlash, FaLock, FaRegEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -8,6 +8,8 @@ import toast from "react-hot-toast";
 const Login = () => {
   const { signInUser, googleLogin } = useAuth();
   const [password, setPassword] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +22,7 @@ const Login = () => {
         console.log(res.user);
         toast.success("Sign In Successfully");
         form.reset();
+        navigate(location.pathname ? location.pathname : "/");
       })
       .catch((err) => console.log(err.message));
   };
@@ -28,6 +31,7 @@ const Login = () => {
     googleLogin()
       .then(() => {
         toast.success("Google Login successfull");
+        navigate(location.state ? location.state : "/");
       })
       .catch((err) => {
         toast.error(err.message);
