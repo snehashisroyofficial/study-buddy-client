@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-
+import { MdDelete } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
+import useAuth from "../../Hooks/useAuth";
+import axios from "axios";
+import Swal from "sweetalert2";
 const Assignments = () => {
   const data = useLoaderData();
-
+  const { user } = useAuth();
   // filter function
 
   const [value, setValue] = useState("all");
@@ -22,6 +26,25 @@ const Assignments = () => {
     setValue(e.target.value);
   };
 
+  const handleDelete = (id) => {
+    axios
+      .delete(`http://localhost:5000/delete/${id}`)
+      .then(() => {
+        const remainingData = filterData.filter((i) => i._id !== id);
+        setfilterData(remainingData);
+
+        Swal.fire({
+          icon: "success",
+          title: "Assignment Deleted Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((err) => console.log(err.message));
+  };
+
+  // console.log(filterData);
+  // console.log(user);
   return (
     <div className="py-10">
       <h1 className="text-3xl font-bold text-center mb-8">All Assignments</h1>
@@ -54,13 +77,32 @@ const Assignments = () => {
         {filterData.map((item) => (
           <div
             key={item._id}
-            className="w-full mx-auto border-2  border-black max-w-sm lg:max-w-xs  overflow-hidden bg-white shadow-lg dark:bg-gray-800"
+            className="relative w-full mx-auto border-2  border-black max-w-sm lg:max-w-xs  overflow-hidden bg-white shadow-lg dark:bg-gray-800"
           >
             <img
               className="object-cover w-full h-56"
               src={item?.url}
               alt="avatar"
             />
+
+            {user?.email === item?.emailAddress && (
+              <div>
+                <button
+                  onClick={() => handleDelete(item._id)}
+                  className="absolute btn top-4 right-4 text-2xl p-3 rounded-full bg-red-500 hover:bg-white text-white hover:text-red-500 tooltip tooltip-left"
+                  data-tip="Delete"
+                >
+                  <MdDelete />
+                </button>
+
+                <button
+                  className="absolute btn top-4 left-4 text-2xl p-3 rounded-full bg-green-500 hover:bg-white  text-white  hover:text-green-500 tooltip tooltip-right "
+                  data-tip="Update"
+                >
+                  <FaEdit />
+                </button>
+              </div>
+            )}
 
             <div className="py-5 px-4 space-y-4">
               <h2 className="text-2xl ">{item.title}</h2>
