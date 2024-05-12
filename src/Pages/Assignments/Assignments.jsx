@@ -95,12 +95,14 @@ const Assignments = () => {
                   <MdDelete />
                 </button>
 
-                <button
-                  className="absolute btn top-4 left-4 text-2xl p-3 rounded-full bg-green-500 hover:bg-white  text-white  hover:text-green-500 tooltip tooltip-right "
-                  data-tip="Update"
-                >
-                  <FaEdit />
-                </button>
+                <Link to={`/update-assignments/${item._id}`}>
+                  <button
+                    className="absolute btn top-4 left-4 text-2xl p-3 rounded-full bg-green-500 hover:bg-white  text-white  hover:text-green-500 tooltip tooltip-right "
+                    data-tip="Update"
+                  >
+                    <FaEdit />
+                  </button>
+                </Link>
               </div>
             )}
 
