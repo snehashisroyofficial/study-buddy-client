@@ -83,7 +83,7 @@ const PendingAssignments = () => {
                         </td>
                         <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                           <Link
-                            to={`/pending-assignments/user-based/${item._id}`}
+                            to={`/pending-assignments/assignment-based/${item._id}`}
                           >
                             <button className="btn btn-primary font-semibold">
                               <FaMarker />

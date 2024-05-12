@@ -56,11 +56,11 @@ const router = createBrowserRouter([
         element: <PendingAssignments />,
       },
       {
-        path: "/pending-assignments/user-based/:id",
+        path: "/pending-assignments/assignment-based/:id",
         element: <UserBased />,
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/pending-assignments/user-based/${params.id}`
+            `http://localhost:5000/pending-assignments/assignment-based/${params.id}`
           ),
       },
     ],

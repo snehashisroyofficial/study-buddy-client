@@ -1,34 +1,45 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { LuLink2 } from "react-icons/lu";
 import useAuth from "../../Hooks/useAuth";
 import { RotatingLines } from "react-loader-spinner";
+import axios from "axios";
+import { useEffect } from "react";
+import Swal from "sweetalert2";
 const UserBased = () => {
-    const data = useLoaderData();
-    const { loading } = useAuth();
-    console.log(data);
+  const data = useLoaderData();
+  const { loading } = useAuth();
+  const navigate = useNavigate();
+  console.log(data);
 
-    const {
-        ObtainedMarks,
-        feedback,
-        assignmentId,
-        buyerDetails,
-        difficulty,
-        displayName,
-        emailAddress,
-        marks,
-        status,
-        submitLink,
-        title,
-        _id;
-} = data;
-
+  console.log(data._id);
   const handleOnSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const marks = form.marks.value;
     const feedback = form.feedback.value;
-    const data = { marks, feedback };
-    console.log(data);
+    const status = "complete";
+    const updateData = { marks, feedback, status };
+
+    axios
+      .patch(`http://localhost:5000/submit-marks/${data?._id}`, updateData)
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Marks Submitted",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        form.reset();
+        navigate("/assignments");
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops! Something went wrong.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
   };
 
   if (loading) {
