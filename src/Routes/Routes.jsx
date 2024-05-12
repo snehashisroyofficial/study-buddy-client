@@ -9,7 +9,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import ViewAssignment from "../Pages/Assignments/ViewAssignment";
 import MySubmittedAssignments from "../Pages/Assignments/MySubmittedAssignments/MySubmittedAssignments";
 import PendingAssignments from "../Pages/PendingAssignments/PendingAssignments";
-import UserBased from "../Pages/PendingAssignments/UserBased";
+import AssignmentBased from "../Pages/PendingAssignments/AssignmentBased";
 
 const router = createBrowserRouter([
   {
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/pending-assignments/assignment-based/:id",
-        element: <UserBased />,
+        element: <AssignmentBased />,
         loader: ({ params }) =>
           fetch(
             `http://localhost:5000/pending-assignments/assignment-based/${params.id}`

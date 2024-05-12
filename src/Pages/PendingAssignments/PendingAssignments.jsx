@@ -17,10 +17,20 @@ const PendingAssignments = () => {
     const { data } = await axios(
       `http://localhost:5000/pending-assignments/${user?.email}`
     );
-    setAssignment(data);
+    const filterData = data.filter((i) => i.status === "pending");
+    setAssignment(filterData);
   };
 
   console.log(assignment);
+
+  if (assignment.length == 0) {
+    return (
+      <div className="flex justify-center items-center h-[500px]">
+        <h1 className="text-2xl font-bold">No Pending Assignments</h1>
+      </div>
+    );
+  }
+
   return (
     <section className="py-20">
       <div className="container px-4 mx-auto ">

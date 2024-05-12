@@ -5,7 +5,7 @@ import { RotatingLines } from "react-loader-spinner";
 import axios from "axios";
 
 import Swal from "sweetalert2";
-const UserBased = () => {
+const AssignmentBased = () => {
   const data = useLoaderData();
   const { loading } = useAuth();
   const navigate = useNavigate();
@@ -143,4 +143,4 @@ const UserBased = () => {
   );
 };
 
-export default UserBased;
+export default AssignmentBased;
