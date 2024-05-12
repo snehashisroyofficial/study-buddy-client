@@ -8,6 +8,8 @@ import Assignments from "../Pages/Assignments/Assignments";
 import PrivateRoutes from "./PrivateRoutes";
 import ViewAssignment from "../Pages/Assignments/ViewAssignment";
 import MySubmittedAssignments from "../Pages/Assignments/MySubmittedAssignments/MySubmittedAssignments";
+import PendingAssignments from "../Pages/PendingAssignments/PendingAssignments";
+import UserBased from "../Pages/PendingAssignments/UserBased";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +50,18 @@ const router = createBrowserRouter([
       {
         path: "/my-submitted-assignments",
         element: <MySubmittedAssignments />,
+      },
+      {
+        path: "/pending-assignments",
+        element: <PendingAssignments />,
+      },
+      {
+        path: "/pending-assignments/user-based/:id",
+        element: <UserBased />,
+        loader: ({ params }) =>
+          fetch(
+            `http://localhost:5000/pending-assignments/user-based/${params.id}`
+          ),
       },
     ],
   },

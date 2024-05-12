@@ -20,7 +20,7 @@ const Navbar = () => {
         <NavLink to="/create-assignments">Create Assignments</NavLink>
       </li>
       <li className="p-2 bg-red-200">
-        <NavLink to="/pendingassignments">Pending Assignments</NavLink>
+        <NavLink to="/pending-assignments">Pending Assignments</NavLink>
       </li>
     </>
   );
