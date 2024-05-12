@@ -3,7 +3,7 @@ import { LuLink2 } from "react-icons/lu";
 import useAuth from "../../Hooks/useAuth";
 import { RotatingLines } from "react-loader-spinner";
 import axios from "axios";
-import { useEffect } from "react";
+
 import Swal from "sweetalert2";
 const UserBased = () => {
   const data = useLoaderData();
