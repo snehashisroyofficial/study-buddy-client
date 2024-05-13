@@ -26,21 +26,40 @@ const Assignments = () => {
     setValue(e.target.value);
   };
 
-  const handleDelete = (id) => {
-    axios
-      .delete(`http://localhost:5000/delete/${id}`)
-      .then(() => {
-        const remainingData = filterData.filter((i) => i._id !== id);
-        setfilterData(remainingData);
+  const handleDelete = (id, emailAddress) => {
+    if (user?.email !== emailAddress) {
+      return Swal.fire({
+        icon: "error",
+        title: "Forbidden",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
 
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:5000/delete/${id}`)
+          .then(() => {
+            const remainingData = filterData.filter((i) => i._id !== id);
+            setfilterData(remainingData);
+          })
+          .catch((err) => console.log(err.message));
         Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
           icon: "success",
-          title: "Assignment Deleted Successfully",
-          showConfirmButton: false,
-          timer: 1500,
         });
-      })
-      .catch((err) => console.log(err.message));
+      }
+    });
   };
 
   // console.log(filterData);
@@ -77,34 +96,34 @@ const Assignments = () => {
         {filterData.map((item) => (
           <div
             key={item._id}
-            className="relative w-full mx-auto border-2  border-black max-w-sm lg:max-w-xs  overflow-hidden bg-white shadow-lg dark:bg-gray-800"
+            className="relative w-full mx-auto border-2  border-black flex flex-col justify-between max-w-sm lg:max-w-xs  overflow-hidden bg-white shadow-lg dark:bg-gray-800"
           >
             <img
               className="object-cover w-full h-56"
-              src={item?.url}
+              src={item?.url ? item.url : "https://i.ibb.co/7gVBxLC/image.png"}
               alt="avatar"
             />
 
-            {user?.email === item?.emailAddress && (
-              <div>
-                <button
-                  onClick={() => handleDelete(item._id)}
-                  className="absolute btn top-4 right-4 text-2xl p-3 rounded-full bg-red-500 hover:bg-white text-white hover:text-red-500 tooltip tooltip-left"
-                  data-tip="Delete"
-                >
-                  <MdDelete />
-                </button>
+            <div>
+              <button
+                onClick={() => handleDelete(item._id, item.emailAddress)}
+                className="absolute btn top-4 right-4 text-2xl p-3 rounded-full bg-red-500 hover:bg-white text-white hover:text-red-500 tooltip tooltip-left"
+                data-tip="Delete"
+              >
+                <MdDelete />
+              </button>
+            </div>
 
-                <Link to={`/update-assignments/${item._id}`}>
-                  <button
-                    className="absolute btn top-4 left-4 text-2xl p-3 rounded-full bg-green-500 hover:bg-white  text-white  hover:text-green-500 tooltip tooltip-right "
-                    data-tip="Update"
-                  >
-                    <FaEdit />
-                  </button>
-                </Link>
-              </div>
-            )}
+            <div>
+              <Link to={`/update-assignments/${item._id}`}>
+                <button
+                  className="absolute btn top-4 left-4 text-2xl p-3 rounded-full bg-green-500 hover:bg-white  text-white  hover:text-green-500 tooltip tooltip-right "
+                  data-tip="Update"
+                >
+                  <FaEdit />
+                </button>
+              </Link>
+            </div>
 
             <div className="py-5 px-4 space-y-4">
               <h2 className="text-2xl ">{item.title}</h2>

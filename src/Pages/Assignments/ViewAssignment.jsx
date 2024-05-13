@@ -94,15 +94,19 @@ const ViewAssignment = () => {
   }
 
   return (
-    <section className="h-screen flex justify-center items-center">
+    <section className="py-16 flex justify-center items-center">
       <div className="flex justify-center  ">
-        <div className="w-1/2  border-2 border-black flex ">
+        <div className="md:w-1/2  border-2 border-black flex ">
           <div className="p-6 space-y-8">
-            <img className="object-cover w-full h-56" src={url} alt="avatar" />
-            <h1 className="text-3xl">{title}</h1>
+            <img
+              className="object-cover w-full h-28 md:h-56"
+              src={url}
+              alt="avatar"
+            />
+            <h1 className="text-xl md:text-3xl">{title}</h1>
             {/* user photo and date row  */}
-            <div className="flex justify-between items-center gap-4">
-              <div className="flex  items-center gap-4">
+            <div className="flex justify-between flex-col lg:flex-row items-center gap-4">
+              <div className="flex   items-center gap-4">
                 <img
                   className="object-cover w-8 h-18 rounded-full"
                   src={photoURL}
@@ -111,7 +115,7 @@ const ViewAssignment = () => {
                 <h2>{buyerName}</h2>
               </div>
               <div>
-                <p className="flex items-center gap-2">
+                <p className="flex  items-center gap-2">
                   <BsCalendarDate />
                   <span className="font-semibold">Due Date: </span>
                   {formattedDate}
@@ -120,7 +124,7 @@ const ViewAssignment = () => {
             </div>
 
             {/* marks and difficulty row  */}
-            <div className="flex justify-between items-center gap-4">
+            <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
               <p className="flex  items-center gap-2">
                 <IoIosBookmarks />
                 <span className="font-semibold">Marks: </span>

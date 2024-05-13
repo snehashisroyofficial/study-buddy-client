@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
+import Swal from "sweetalert2";
 const Register = () => {
   const [button, setButton] = useState(true);
   const { createUser } = useAuth();
@@ -27,7 +28,12 @@ const Register = () => {
           photoURL: url,
         });
 
-        toast.success("account created successfully");
+        Swal.fire({
+          icon: "success",
+          title: "Registration Successfull",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         reset();
       })
       .catch((err) => toast.error(err.message));

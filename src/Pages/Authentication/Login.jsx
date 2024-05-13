@@ -3,7 +3,7 @@ import { FaEyeSlash, FaLock, FaRegEye } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
-import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { signInUser, googleLogin } = useAuth();
@@ -20,7 +20,13 @@ const Login = () => {
     signInUser(email, password)
       .then((res) => {
         console.log(res.user);
-        toast.success("Sign In Successfully");
+        Swal.fire({
+          icon: "success",
+          title: "Account login successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
         form.reset();
         navigate(location.pathname ? location.pathname : "/");
       })
@@ -30,7 +36,12 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleLogin()
       .then(() => {
-        toast.success("Google Login successfull");
+        Swal.fire({
+          icon: "success",
+          title: "Account login successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate(location.state ? location.state : "/");
       })
       .catch((err) => {

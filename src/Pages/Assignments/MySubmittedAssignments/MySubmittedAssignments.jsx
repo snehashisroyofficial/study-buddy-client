@@ -115,7 +115,7 @@ const MySubmittedAssignments = () => {
                             ? item.obtainedMarks
                             : "No Available"}
                         </td>
-                        <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                        <td className="px-4 py-4  max-w-56 text-wrap text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                           {item?.feedBack ? item.feedBack : "No Available"}
                         </td>
                       </tr>

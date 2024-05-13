@@ -1,22 +1,12 @@
+import axios from "axios";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateAssignments = () => {
   const data = useLoaderData();
-
-  //   const {
-  //     _id,
-  //     emailAddress,
-  //     photoURL,
-  //     buyerName,
-  //     title,
-  //     url,
-  //     marks,
-  //     difficulty,
-  //     description,
-  //     date,
-  //   } = data;
+  const navigate = useNavigate();
   const { date } = data;
   const [startDate, setStartDate] = useState(new Date(date));
 
@@ -29,17 +19,34 @@ const UpdateAssignments = () => {
     const date = startDate;
     const difficulty = form.difficulty.value;
     const description = form.description.value;
-    const patchData = {
+    const updateData = {
       title,
       url,
       marks,
       date,
       difficulty,
-
       description,
     };
-
-    console.log(patchData);
+    console.log(updateData);
+    axios
+      .patch(`http://localhost:5000/update-assignment/${data?._id}`, updateData)
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Assignment details updated successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/assignments");
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops! Something went wrong.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
   };
 
   return (
