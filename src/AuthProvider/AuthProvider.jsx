@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { getAuth } from "firebase/auth";
 import app from "../Firebase/firebase.config";
+import axios from "axios";
 
 //context api created
 export const AuthContext = createContext(null);
@@ -39,13 +40,13 @@ const AuthProvider = ({ children }) => {
 
   //get the current user
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
       setLoading(false);
     });
 
     return () => {
-      unSubscribe();
+      return unSubscribe();
     };
   }, []);
 

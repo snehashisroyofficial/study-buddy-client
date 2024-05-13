@@ -44,7 +44,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/update-assignments/:id",
-        element: <UpdateAssignments />,
+        element: (
+          <PrivateRoutes>
+            <UpdateAssignments />
+          </PrivateRoutes>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/view-assignment/${params.id}`),
       },
@@ -61,11 +65,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/my-submitted-assignments",
-        element: <MySubmittedAssignments />,
+        element: (
+          <PrivateRoutes>
+            <MySubmittedAssignments />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/pending-assignments",
-        element: <PendingAssignments />,
+        element: (
+          <PrivateRoutes>
+            <PendingAssignments />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/pending-assignments/assignment-based/:id",
