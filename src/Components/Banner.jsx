@@ -19,7 +19,7 @@ const Banner = () => {
           <Lottie options={defaultOptions} />
         </div>
         <div className=" lg:w-1/2   flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left ">
-          <h1 className="text-5xl font-bold leading-none sm:text-5xl h-36 ">
+          <h1 className="text-3xl font-bold leading-none sm:text-5xl h-24 lg:h-36 ">
             Empower Your Learning:{" "}
             <span className="text-blue-600">
               <Typewriter

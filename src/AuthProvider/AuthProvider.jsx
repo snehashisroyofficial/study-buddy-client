@@ -41,8 +41,25 @@ const AuthProvider = ({ children }) => {
   //get the current user
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
+      const userLogin = { email: userEmail };
+      console.log(userEmail);
       setUser(currentUser);
       setLoading(false);
+
+      if (currentUser) {
+        axios
+          .post("http://localhost:5000/jwt", userLogin, {
+            withCredentials: true,
+          })
+          .then((res) => console.log(res.data));
+      } else {
+        axios
+          .post("http://localhost:5000/clearCookies", userLogin, {
+            withCredentials: true,
+          })
+          .then((res) => console.log(res.data));
+      }
     });
 
     return () => {

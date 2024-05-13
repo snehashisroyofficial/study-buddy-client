@@ -94,7 +94,7 @@ const ViewAssignment = () => {
   }
 
   return (
-    <section className="py-16 flex justify-center items-center">
+    <section className="py-16 flex justify-center items-center px-4">
       <div className="flex justify-center  ">
         <div className="md:w-1/2  border-2 border-black flex ">
           <div className="p-6 space-y-8">
@@ -103,9 +103,9 @@ const ViewAssignment = () => {
               src={url}
               alt="avatar"
             />
-            <h1 className="text-xl md:text-3xl">{title}</h1>
+            <h1 className="text-3xl  md:text-3xl">{title}</h1>
             {/* user photo and date row  */}
-            <div className="flex justify-between flex-col lg:flex-row items-center gap-4">
+            <div className="flex  md:justify-between flex-col lg:flex-row items-center gap-4">
               <div className="flex   items-center gap-4">
                 <img
                   className="object-cover w-8 h-18 rounded-full"
