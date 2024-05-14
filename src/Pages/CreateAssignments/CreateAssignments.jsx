@@ -7,9 +7,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const CreateAssignments = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
 
   const [startDate, setStartDate] = useState(new Date());
 
@@ -37,7 +39,7 @@ const CreateAssignments = () => {
   }, [user, reset]);
 
   const handleOnPost = (data) => {
-    axios
+    axiosSecure
       .post("http://localhost:5000/create", data)
       .then(() => {
         Swal.fire({

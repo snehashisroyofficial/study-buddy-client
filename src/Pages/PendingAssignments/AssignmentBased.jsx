@@ -5,8 +5,11 @@ import { RotatingLines } from "react-loader-spinner";
 import axios from "axios";
 
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 const AssignmentBased = () => {
   const data = useLoaderData();
+  const axiosSecure = useAxiosSecure();
+
   const { loading } = useAuth();
   const navigate = useNavigate();
   console.log(data);
@@ -20,7 +23,7 @@ const AssignmentBased = () => {
     const status = "complete";
     const updateData = { marks, feedback, status };
 
-    axios
+    axiosSecure
       .patch(`http://localhost:5000/submit-marks/${data?._id}`, updateData)
       .then(() => {
         Swal.fire({

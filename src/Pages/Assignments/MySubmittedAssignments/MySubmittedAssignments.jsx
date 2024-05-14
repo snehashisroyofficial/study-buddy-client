@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import axios from "axios";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const MySubmittedAssignments = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const [assignment, setAssignment] = useState([]);
 
   useEffect(() => {
@@ -11,9 +13,8 @@ const MySubmittedAssignments = () => {
   }, [user]);
 
   const getData = async () => {
-    const { data } = await axios(
-      `http://localhost:5000/my-submitted-assignments/${user?.email}`,
-      { withCredentials: true }
+    const { data } = await axiosSecure(
+      `/my-submitted-assignments/${user?.email}`
     );
     setAssignment(data);
   };

@@ -5,8 +5,11 @@ import { FaEdit } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 const Assignments = () => {
   const data = useLoaderData();
+  const axiosSecure = useAxiosSecure();
+
   const { user } = useAuth();
   // filter function
 
@@ -46,7 +49,7 @@ const Assignments = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios
+        axiosSecure
           .delete(`http://localhost:5000/delete/${id}`)
           .then(() => {
             const remainingData = filterData.filter((i) => i._id !== id);

@@ -3,10 +3,13 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const UpdateAssignments = () => {
   const data = useLoaderData();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
+
   const { date } = data;
   const [startDate, setStartDate] = useState(new Date(date));
 
@@ -28,7 +31,7 @@ const UpdateAssignments = () => {
       description,
     };
     console.log(updateData);
-    axios
+    axiosSecure
       .patch(`http://localhost:5000/update-assignment/${data?._id}`, updateData)
       .then(() => {
         Swal.fire({

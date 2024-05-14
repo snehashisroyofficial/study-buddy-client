@@ -8,9 +8,11 @@ import { RotatingLines } from "react-loader-spinner";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const ViewAssignment = () => {
   const { user, loading } = useAuth();
+  const axiosSecure = useAxiosSecure();
 
   const data = useLoaderData();
   const navigate = useNavigate();
@@ -61,7 +63,7 @@ const ViewAssignment = () => {
     };
     console.log(submitData);
 
-    axios
+    axiosSecure
       .post("http://localhost:5000/submit-assignment", submitData)
       .then(() => {
         Swal.fire({

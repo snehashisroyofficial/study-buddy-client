@@ -3,10 +3,11 @@ import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import { FaMarker } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const PendingAssignments = () => {
   const { user } = useAuth();
-
+  const axiosSecure = useAxiosSecure();
   const [assignment, setAssignment] = useState([]);
 
   useEffect(() => {
@@ -14,10 +15,7 @@ const PendingAssignments = () => {
   }, [user]);
 
   const getData = async () => {
-    const { data } = await axios(
-      `http://localhost:5000/pending-assignments/${user?.email}`,
-      { withCredentials: true }
-    );
+    const { data } = await axiosSecure(`/pending-assignments/${user?.email}`);
     const filterData = data.filter((i) => i.status === "pending");
     setAssignment(filterData);
   };
