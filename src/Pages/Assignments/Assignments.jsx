@@ -3,7 +3,6 @@ import { Link, useLoaderData } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
-import axios from "axios";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 const Assignments = () => {
@@ -15,6 +14,11 @@ const Assignments = () => {
 
   const [value, setValue] = useState("all");
   const [filterData, setfilterData] = useState([]);
+  //pagination
+  const [currentPage, setcurrentPage] = useState(0);
+  const [itemsperPage, setitemsPerPage] = useState(3);
+  const numberOfPages = Math.ceil(filterData.length / itemsperPage);
+  const pages = [...Array(numberOfPages).keys()];
 
   useEffect(() => {
     if (value === "all") {
@@ -24,6 +28,14 @@ const Assignments = () => {
       setfilterData(filter);
     }
   }, [data, value]);
+
+  // useEffect(() => {
+  //   if (currentPage === 0) {
+  //     setpaginationFilter(filterData);
+  //   } else {
+  //     setpaginationFilter(filterData.slice(0, currentPage));
+  //   }
+  // }, [filterData, currentPage]);
 
   const handleOnFilter = (e) => {
     setValue(e.target.value);
@@ -65,8 +77,25 @@ const Assignments = () => {
     });
   };
 
-  // console.log(filterData);
-  // console.log(user);
+  const handleItemsPerPage = (e) => {
+    const value = parseInt(e.target.value);
+    console.log(value);
+    setitemsPerPage(value);
+    setcurrentPage(0);
+  };
+
+  const handlePriviousPage = () => {
+    if (currentPage > 0) {
+      setcurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < pages.length - 1) {
+      setcurrentPage(currentPage + 1);
+    }
+  };
+
   return (
     <div className="py-10">
       <h1 className="text-3xl font-bold text-center mb-8">All Assignments</h1>
@@ -152,6 +181,48 @@ const Assignments = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className=" py-16 flex justify-center items-center flex-col">
+        <p>Current page is {currentPage}</p>
+
+        <div>
+          <button
+            onClick={handlePriviousPage}
+            className="px-4 py-2 rounded-xl bg-blue-300"
+          >
+            Privious
+          </button>
+          {pages.map((page) => (
+            <button
+              onClick={() => setcurrentPage(page)}
+              key={page}
+              className={` mx-4 px-4 py-2 rounded-xl ${
+                currentPage === page ? "bg-orange-500" : "bg-orange-100"
+              }`}
+            >
+              {page}
+            </button>
+          ))}
+          <select
+            name=""
+            id=""
+            value={itemsperPage}
+            onChange={handleItemsPerPage}
+          >
+            <option value="3">3</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+            <option value="50">50</option>
+          </select>
+          <button
+            onClick={handleNextPage}
+            className="px-4 py-2 rounded-xl bg-blue-300"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );
