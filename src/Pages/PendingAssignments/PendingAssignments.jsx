@@ -15,7 +15,8 @@ const PendingAssignments = () => {
 
   const getData = async () => {
     const { data } = await axios(
-      `http://localhost:5000/pending-assignments/${user?.email}`
+      `http://localhost:5000/pending-assignments/${user?.email}`,
+      { withCredentials: true }
     );
     const filterData = data.filter((i) => i.status === "pending");
     setAssignment(filterData);

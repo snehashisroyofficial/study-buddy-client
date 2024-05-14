@@ -12,7 +12,8 @@ const MySubmittedAssignments = () => {
 
   const getData = async () => {
     const { data } = await axios(
-      `http://localhost:5000/my-submitted-assignments/${user?.email}`
+      `http://localhost:5000/my-submitted-assignments/${user?.email}`,
+      { withCredentials: true }
     );
     setAssignment(data);
   };
