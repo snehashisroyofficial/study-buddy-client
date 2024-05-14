@@ -13,10 +13,14 @@ const MySubmittedAssignments = () => {
   }, [user]);
 
   const getData = async () => {
-    const { data } = await axiosSecure(
-      `/my-submitted-assignments/${user?.email}`
-    );
-    setAssignment(data);
+    try {
+      const { data } = await axiosSecure(
+        `/my-submitted-assignments/${user?.email}`
+      );
+      setAssignment(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <section className="py-20">
