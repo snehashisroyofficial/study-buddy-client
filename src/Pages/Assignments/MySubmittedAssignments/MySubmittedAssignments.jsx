@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
-import axios from "axios";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const MySubmittedAssignments = () => {
@@ -13,15 +12,19 @@ const MySubmittedAssignments = () => {
   }, [user]);
 
   const getData = async () => {
-    try {
-      const { data } = await axiosSecure(
-        `/my-submitted-assignments/${user?.email}`
-      );
-      setAssignment(data);
-    } catch (error) {
-      console.log(error);
-    }
+    const { data } = await axiosSecure(
+      `/my-submitted-assignments/${user?.email}`
+    );
+    setAssignment(data);
   };
+
+  if (assignment.length == 0) {
+    return (
+      <div className="flex justify-center items-center h-[500px]">
+        <h1 className="text-2xl font-bold">No Pending Assignments</h1>
+      </div>
+    );
+  }
   return (
     <section className="py-20">
       <div className="container px-4 mx-auto ">
