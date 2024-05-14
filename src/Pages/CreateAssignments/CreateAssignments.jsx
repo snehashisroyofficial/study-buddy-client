@@ -40,7 +40,7 @@ const CreateAssignments = () => {
 
   const handleOnPost = (data) => {
     axiosSecure
-      .post("http://localhost:5000/create", data)
+      .post("https://study-buddy-server-mu.vercel.app/create", data)
       .then(() => {
         Swal.fire({
           icon: "success",

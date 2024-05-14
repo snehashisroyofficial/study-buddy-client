@@ -24,7 +24,10 @@ const AssignmentBased = () => {
     const updateData = { marks, feedback, status };
 
     axiosSecure
-      .patch(`http://localhost:5000/submit-marks/${data?._id}`, updateData)
+      .patch(
+        `https://study-buddy-server-mu.vercel.app/submit-marks/${data?._id}`,
+        updateData
+      )
       .then(() => {
         Swal.fire({
           icon: "success",

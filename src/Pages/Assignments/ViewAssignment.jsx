@@ -64,7 +64,10 @@ const ViewAssignment = () => {
     console.log(submitData);
 
     axiosSecure
-      .post("http://localhost:5000/submit-assignment", submitData)
+      .post(
+        "https://study-buddy-server-mu.vercel.app/submit-assignment",
+        submitData
+      )
       .then(() => {
         Swal.fire({
           icon: "success",

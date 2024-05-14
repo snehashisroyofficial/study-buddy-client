@@ -62,7 +62,7 @@ const Assignments = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure
-          .delete(`http://localhost:5000/delete/${id}`)
+          .delete(`https://study-buddy-server-mu.vercel.app/delete/${id}`)
           .then(() => {
             const remainingData = filterData.filter((i) => i._id !== id);
             setfilterData(remainingData);

@@ -49,15 +49,19 @@ const AuthProvider = ({ children }) => {
 
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", userLogin, {
+          .post("https://study-buddy-server-mu.vercel.app/jwt", userLogin, {
             withCredentials: true,
           })
           .then((res) => console.log(res.data));
       } else {
         axios
-          .post("http://localhost:5000/clearCookies", userLogin, {
-            withCredentials: true,
-          })
+          .post(
+            "https://study-buddy-server-mu.vercel.app/clearCookies",
+            userLogin,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => console.log(res.data));
       }
     });

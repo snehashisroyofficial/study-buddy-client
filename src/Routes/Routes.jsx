@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         path: "/assignments",
         element: <Assignments />,
         loader: () =>
-          fetch("http://localhost:5000/allAssignments", {
+          fetch("https://study-buddy-server-mu.vercel.app/allAssignments", {
             credentials: "include",
           }),
       },
@@ -53,7 +53,9 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/view-assignment/${params.id}`),
+          fetch(
+            `https://study-buddy-server-mu.vercel.app/view-assignment/${params.id}`
+          ),
       },
       {
         path: "/view-assignment/:id",
@@ -64,7 +66,9 @@ const router = createBrowserRouter([
         ),
 
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/view-assignment/${params.id}`),
+          fetch(
+            `https://study-buddy-server-mu.vercel.app/view-assignment/${params.id}`
+          ),
       },
       {
         path: "/my-submitted-assignments",
@@ -87,7 +91,7 @@ const router = createBrowserRouter([
         element: <AssignmentBased />,
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/pending-assignments/assignment-based/${params.id}`
+            `https://study-buddy-server-mu.vercel.app/pending-assignments/assignment-based/${params.id}`
           ),
       },
     ],

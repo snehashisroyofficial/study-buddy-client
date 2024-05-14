@@ -32,7 +32,10 @@ const UpdateAssignments = () => {
     };
     console.log(updateData);
     axiosSecure
-      .patch(`http://localhost:5000/update-assignment/${data?._id}`, updateData)
+      .patch(
+        `https://study-buddy-server-mu.vercel.app/update-assignment/${data?._id}`,
+        updateData
+      )
       .then(() => {
         Swal.fire({
           icon: "success",
