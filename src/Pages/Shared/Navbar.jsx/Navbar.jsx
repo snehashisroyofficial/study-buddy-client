@@ -87,6 +87,8 @@ const Navbar = () => {
   return (
     <div className="navbar container mx-auto py-3">
       <div className="navbar-start">
+        {/* for mobile devices  */}
+
         <div className="">
           <div
             onClick={() => setOpen(!open)}
@@ -98,7 +100,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className={`menu menu-sm px-6 font-poppins font-semibold absolute lg:hidden mt-4 z-[1] p-4 gap-4 w-2/3 bg-base-200 h-screen transition-all duration-500 ease-in ${
+            className={`menu menu-sm px-6 font-poppins font-semibold absolute lg:hidden mt-4 z-[1] p-4 gap-4 w-2/3 bg-base-200 dark:bg-gray-800 h-screen transition-all duration-500 ease-in ${
               open ? "left-0 top-14" : "-left-full top-14"
             }`}
           >
@@ -155,22 +157,22 @@ const Navbar = () => {
 
         {/* circle avatar section  */}
         {user && (
-          <div className="dropdown dropdown-end pr-4 md:pr-0">
+          <div className="dropdown dropdown-end pr-4 md:pr-0 ">
             <div
               tabIndex={0}
               role="button"
               className="btn btn-ghost btn-circle avatar "
             >
-              <div className="w-30  rounded-full  ring ring-yellow-300 ring-offset-base-100 ring-offset-2">
+              <div className="w-30  rounded-full  ">
                 <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
               </div>
             </div>
             <ul
               tabIndex={0}
-              className="mt-3 z-[1] px-2  py-4 w-[200px] flex gap-4 shadow menu menu-sm dropdown-content bg-base-100  "
+              className=" dark:bg-gray-700 mt-3 z-[1] px-2  py-4 w-[200px] flex gap-2 shadow menu menu-sm dropdown-content bg-base-100  "
             >
               <NavLink
-                className="w-full py-2 text-sm text-center bg-green-100/60  font-bold text-green-600 rounded-md"
+                className="w-full py-2 text-sm text-center bg-green-100/60  dark:bg-green-700 dark:text-white font-bold text-green-600 rounded-md"
                 to="/my-submitted-assignments"
               >
                 Attempted Assignments
@@ -178,7 +180,7 @@ const Navbar = () => {
 
               <button
                 onClick={handleSignout}
-                className=" w-full py-2 text-lg bg-red-100/60  font-bold text-red-600 rounded-md  "
+                className=" w-full py-2 text-lg bg-red-100/60 dark:bg-red-700 dark:text-white   font-bold text-red-600 rounded-md  "
               >
                 Logout
               </button>
@@ -195,7 +197,7 @@ const Navbar = () => {
                 role="button"
                 className="btn btn-ghost btn-circle avatar "
               >
-                <div className="w-30  rounded-full  ring ring-yellow-300 ring-offset-base-100 ring-offset-2">
+                <div className="w-30  rounded-full  ">
                   <img
                     alt="Tailwind CSS Navbar component"
                     src="https://img.icons8.com/external-kmg-design-flat-kmg-design/32/external-user-user-interface-kmg-design-flat-kmg-design-2.png"
@@ -204,16 +206,16 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="mt-3 z-[1]   py-4 w-[200px] flex gap-2 shadow menu menu-sm dropdown-content bg-base-100  "
+                className="dark:bg-gray-800 mt-3 z-[1]   py-4 w-[200px] flex gap-2 shadow menu menu-sm dropdown-content bg-base-100  "
               >
                 <Link to="/login">
-                  <button className=" w-full py-2 text-lg  text-blue-700 bg-blue-400/40 rounded-xl font-bold">
+                  <button className=" w-full py-2 text-lg dark:bg-blue-700 dark:text-white   text-blue-700 bg-blue-400/40 rounded-xl font-bold">
                     Sign in
                   </button>
                 </Link>
 
                 <Link to="/register">
-                  <button className="w-full py-2 text-lg text-green-700 bg-green-400/60 rounded-xl font-bold">
+                  <button className="w-full py-2 text-lg dark:bg-green-700 dark:text-white  text-green-700 bg-green-400/60 rounded-xl font-bold">
                     Register
                   </button>
                 </Link>
@@ -223,13 +225,13 @@ const Navbar = () => {
             {/* for large screen  */}
             <div className="space-x-3 hidden lg:flex">
               <Link to="/login">
-                <button className=" px-2 md:px-6 py-2  text-blue-700 bg-blue-400/40 rounded-xl font-bold inline">
+                <button className=" px-2 md:px-6 py-2 dark:bg-blue-700 dark:text-white  text-blue-700 bg-blue-400/40 rounded-xl font-bold inline">
                   Sign in
                 </button>
               </Link>
 
               <Link to="/register">
-                <button className="px-2 md:px-6 py-2 text-green-700 bg-green-400/60 rounded-xl font-bold">
+                <button className="px-2 md:px-6 py-2 dark:bg-green-700 dark:text-white text-green-700 bg-green-400/60 rounded-xl font-bold">
                   Register
                 </button>
               </Link>

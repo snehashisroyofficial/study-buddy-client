@@ -151,13 +151,13 @@ const ViewAssignment = () => {
 
             <button
               onClick={() => document.getElementById("my_modal_3").showModal()}
-              className="capitalize btn mt-4    bg-green-600 hover:bg-green-300 hover:text-black text-white w-full text-center text-lg"
+              className="capitalize btn mt-4  border-0  bg-green-500 hover:bg-green-300 hover:text-black text-white w-full text-center text-lg"
             >
               Take Assignment
             </button>
             {/* modal section  */}
             <dialog id="my_modal_3" className="modal">
-              <div className="modal-box space-y-4">
+              <div className="modal-box space-y-4 dark:bg-gray-600  dark:text-white">
                 <form method="dialog">
                   {/* if there is a button in form, it will close the modal */}
                   <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
@@ -186,7 +186,7 @@ const ViewAssignment = () => {
                   </div>
 
                   <div className="flex justify-center">
-                    <button className="btn text-center  bg-blue-700 hover:bg-blue-300 text-white hover:text-black">
+                    <button className="btn text-center border-0  bg-blue-700 hover:bg-blue-300 text-white hover:text-black">
                       Submit Assignment
                     </button>
                   </div>

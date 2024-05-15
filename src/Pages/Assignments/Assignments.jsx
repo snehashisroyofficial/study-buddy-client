@@ -128,7 +128,7 @@ const Assignments = () => {
         {filterData.map((item) => (
           <div
             key={item._id}
-            className=" dark:bg-gray-700  dark:text-white relative w-full mx-auto border-2  border-black flex flex-col justify-between max-w-sm lg:max-w-xs  overflow-hidden bg-white shadow-lg dark:bg-gray-800"
+            className=" dark:bg-gray-800  dark:text-white relative w-full mx-auto  flex flex-col justify-between max-w-sm lg:max-w-xs  overflow-hidden bg-white shadow-lg "
           >
             <img
               className="object-cover w-full h-56"
@@ -174,7 +174,7 @@ const Assignments = () => {
                 </div>
               </div>
               <Link to={`/view-assignment/${item._id}`}>
-                <button className="capitalize btn mt-4    bg-blue-300 hover:bg-blue-700 hover:text-white w-full text-center text-lg">
+                <button className="capitalize btn rounded-2xl mt-4  border-0   bg-blue-600 hover:bg-green-500 text-white hover:text-white w-full text-center text-lg">
                   view assignment
                 </button>
               </Link>
