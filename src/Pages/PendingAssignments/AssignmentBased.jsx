@@ -6,6 +6,7 @@ import axios from "axios";
 
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 const AssignmentBased = () => {
   const data = useLoaderData();
   const axiosSecure = useAxiosSecure();
@@ -67,6 +68,9 @@ const AssignmentBased = () => {
   }
   return (
     <section className="py-10">
+      <Helmet>
+        <title>Give Marks</title>
+      </Helmet>
       <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white"></h2>
       <div className="flex flex-col lg:flex-row  gap-4 p-4 ">
         <div className="lg:w-1/2 h-full space-y-4 ">

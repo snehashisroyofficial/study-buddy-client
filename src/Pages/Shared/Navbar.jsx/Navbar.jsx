@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { SiStudyverse } from "react-icons/si";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 const Navbar = () => {
   const { user, logOut } = useAuth();
 
@@ -80,7 +81,12 @@ const Navbar = () => {
   const handleSignout = () => {
     logOut()
       .then(() => {
-        toast.success("Logout Successfull");
+        Swal.fire({
+          icon: "success",
+          title: "Logout Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((err) => console.log(err.message));
   };
@@ -107,10 +113,13 @@ const Navbar = () => {
             {navlinks}
           </ul>
         </div>
-        <a className="btn btn-ghost text-lg md:text-2xl text-orange-500  font-header">
+        <Link
+          to="/"
+          className="btn btn-ghost text-lg md:text-2xl text-orange-500  font-header"
+        >
           <SiStudyverse className="text-lg md:text-4xl" />
           Study Buddy
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex font-semibold ">
         <ul className="  menu-horizontal px-1 text-base space-x-3">

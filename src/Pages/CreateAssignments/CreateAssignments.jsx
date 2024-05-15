@@ -8,6 +8,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const CreateAssignments = () => {
   const { user } = useAuth();
@@ -55,6 +56,9 @@ const CreateAssignments = () => {
 
   return (
     <section className="py-10">
+      <Helmet>
+        <title>Create Assignments</title>
+      </Helmet>
       <div className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800 ">
         <h2 className="py-6 text-3xl font-semibold text-gray-700 capitalize dark:text-white text-center ">
           Create Assignment

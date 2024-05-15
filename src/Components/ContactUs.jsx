@@ -1,6 +1,11 @@
+import { Helmet } from "react-helmet";
+
 const ContactUs = () => {
   return (
     <section className="  my-14 ">
+      <Helmet>
+        <title>Contact us</title>
+      </Helmet>
       <div className="container px-6 py-12 mx-auto ">
         <div className="lg:flex lg:items-center lg:-mx-6">
           <div className="lg:w-1/2 lg:mx-6">

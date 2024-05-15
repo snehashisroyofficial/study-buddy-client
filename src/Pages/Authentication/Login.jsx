@@ -5,6 +5,7 @@ import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { signInUser, googleLogin } = useAuth();
@@ -51,6 +52,9 @@ const Login = () => {
   };
   return (
     <section className="bg-white dark:bg-gray-900">
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div className="container flex flex-col items-center justify-center min-h-screen px-6 mx-auto">
         <form onSubmit={handleOnSubmit} className="w-full max-w-md">
           <div className="space-y-3">

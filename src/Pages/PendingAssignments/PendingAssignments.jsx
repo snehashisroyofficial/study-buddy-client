@@ -1,26 +1,48 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
-import axios from "axios";
 import { FaMarker } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { RotatingLines } from "react-loader-spinner";
+import { Helmet } from "react-helmet";
 
 const PendingAssignments = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [assignment, setAssignment] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const email = user?.email;
+  // console.log(userEmail);
+
   const getData = async () => {
-    const { data } = await axiosSecure(`/pending-assignments/${user?.email}`);
+    const { data } = await axiosSecure(`/pending-assignments/${email}`);
     const filterData = data.filter((i) => i.status === "pending");
-    // Update state directly, no need to return
     setAssignment(filterData);
   };
 
   useEffect(() => {
     getData();
+    setLoading(false);
   }, []);
 
-  console.log(user);
+  if (loading) {
+    return (
+      <div className="h-dvh flex justify-center items-center">
+        <RotatingLines
+          visible={true}
+          height="96"
+          width="96"
+          color="grey"
+          strokeWidth="5"
+          animationDuration="0.75"
+          ariaLabel="rotating-lines-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+        />
+      </div>
+    );
+  }
 
   if (assignment.length == 0) {
     return (
@@ -32,6 +54,9 @@ const PendingAssignments = () => {
 
   return (
     <section className="py-20">
+      <Helmet>
+        <title>Pending Assignments</title>
+      </Helmet>
       <div className="container px-4 mx-auto ">
         <div className="flex items-center gap-x-3">
           <h2 className="text-lg font-medium text-gray-800 dark:text-white">

@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 const Register = () => {
   const [button, setButton] = useState(true);
   const { createUser } = useAuth();
@@ -44,6 +45,9 @@ const Register = () => {
 
   return (
     <section className="bg-white dark:bg-gray-900">
+      <Helmet>
+        <title>Register</title>
+      </Helmet>
       <div className="flex justify-center items-center   min-h-screen py-6">
         <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:pr-12 lg:pl-0 lg:py-0 lg:w-3/5 ">
           <div className="w-full">

@@ -5,6 +5,7 @@ import { FaEdit } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 const Assignments = () => {
   const data = useLoaderData();
   const axiosSecure = useAxiosSecure();
@@ -65,7 +66,7 @@ const Assignments = () => {
           .catch((err) => console.log(err.message));
         Swal.fire({
           title: "Deleted!",
-          text: "Your file has been deleted.",
+          text: "Your assignment has been deleted.",
           icon: "success",
         });
       }
@@ -74,6 +75,9 @@ const Assignments = () => {
 
   return (
     <div className="py-10 px-4">
+      <Helmet>
+        <title>All Assignments</title>
+      </Helmet>
       <h1 className="text-3xl font-bold text-center mb-8">All Assignments</h1>
 
       {/* difficulty level  */}

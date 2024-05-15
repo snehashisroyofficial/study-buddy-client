@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const UpdateAssignments = () => {
   const data = useLoaderData();
@@ -57,6 +58,9 @@ const UpdateAssignments = () => {
 
   return (
     <section className="py-10">
+      <Helmet>
+        <title>Update Assignments</title>
+      </Helmet>
       <div className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800 border">
         <h2 className="py-6 text-3xl font-semibold text-gray-700 capitalize dark:text-white text-center ">
           Update Assignment

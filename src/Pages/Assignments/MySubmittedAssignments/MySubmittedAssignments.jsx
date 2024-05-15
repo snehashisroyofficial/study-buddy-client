@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { RotatingLines } from "react-loader-spinner";
+import { Helmet } from "react-helmet";
 
 const MySubmittedAssignments = () => {
   const { user } = useAuth();
@@ -10,6 +11,7 @@ const MySubmittedAssignments = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     getData();
+    setLoading(false);
   }, [user]);
 
   const getData = async () => {
@@ -17,7 +19,6 @@ const MySubmittedAssignments = () => {
       `/my-submitted-assignments/${user?.email}`
     );
     setAssignment(data);
-    setLoading(false);
   };
 
   if (loading) {
@@ -47,6 +48,9 @@ const MySubmittedAssignments = () => {
   }
   return (
     <section className="py-20">
+      <Helmet>
+        <title>Submitted Assignments</title>
+      </Helmet>
       <div className="container px-4 mx-auto ">
         <div className="flex items-center gap-x-3">
           <h2 className="text-lg font-medium text-gray-800 dark:text-white">

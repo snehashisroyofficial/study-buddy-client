@@ -9,6 +9,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const ViewAssignment = () => {
   const { user, loading } = useAuth();
@@ -100,11 +101,14 @@ const ViewAssignment = () => {
 
   return (
     <section className="py-16 flex justify-center items-center px-4 ">
+      <Helmet>
+        <title>View Assignments</title>
+      </Helmet>
       <div className="flex justify-center  ">
-        <div className="md:w-1/2   flex dark:bg-gray-800  dark:text-white ">
+        <div className=" max-w-xl  flex dark:bg-gray-800  dark:text-white ">
           <div className="p-6 space-y-8">
             <img
-              className="object-cover w-full h-28 md:h-56"
+              className="object-cover w-full  h-28 md:h-56"
               src={url}
               alt="avatar"
             />

@@ -13,7 +13,7 @@ const Banner = () => {
     },
   };
   return (
-    <section className="bg-gray-100  dark:bg-gray-800 text-gray-800 rounded-xl dark:text-white">
+    <section className="bg-gray-100  dark:bg-gray-800 text-gray-800 rounded-xl dark:text-white  ">
       <div className="container flex flex-col gap-4 justify-center p-6 mx-auto  lg:flex-row lg:justify-between">
         <div className="lg:w-1/2 flex items-center   justify-center max-h-fit  ">
           <Lottie options={defaultOptions} />
