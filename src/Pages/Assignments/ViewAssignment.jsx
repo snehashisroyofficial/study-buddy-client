@@ -101,7 +101,7 @@ const ViewAssignment = () => {
   return (
     <section className="py-16 flex justify-center items-center px-4 ">
       <div className="flex justify-center  ">
-        <div className="md:w-1/2  border-2 border-black flex dark:bg-gray-800  dark:text-white ">
+        <div className="md:w-1/2   flex dark:bg-gray-800  dark:text-white ">
           <div className="p-6 space-y-8">
             <img
               className="object-cover w-full h-28 md:h-56"
@@ -110,39 +110,40 @@ const ViewAssignment = () => {
             />
             <h1 className="text-3xl  md:text-3xl">{title}</h1>
             {/* user photo and date row  */}
-            <div className="flex  md:justify-between flex-col lg:flex-row items-center gap-4">
-              <div className="flex   items-center gap-4">
-                <img
-                  className="object-cover w-8 h-18 rounded-full"
-                  src={photoURL}
-                  alt=""
-                />
-                <h2>{buyerName}</h2>
+            <div className="space-y-4 lg:space-y-8">
+              <div className="flex items-start md:justify-between flex-col lg:flex-row lg:items-center gap-4">
+                <div className="flex   items-center gap-4">
+                  <img
+                    className="object-cover w-8 h-18 rounded-full"
+                    src={photoURL}
+                    alt=""
+                  />
+                  <h2>{buyerName}</h2>
+                </div>
+                <div>
+                  <p className="flex  items-center gap-2">
+                    <BsCalendarDate />
+                    <span className="font-semibold">Due Date: </span>
+                    {formattedDate}
+                  </p>
+                </div>
               </div>
-              <div>
+
+              {/* marks and difficulty row  */}
+              <div className="flex items-start flex-col lg:flex-row justify-between lg:items-center gap-4">
                 <p className="flex  items-center gap-2">
-                  <BsCalendarDate />
-                  <span className="font-semibold">Due Date: </span>
-                  {formattedDate}
+                  <IoIosBookmarks />
+                  <span className="font-semibold">Marks: </span>
+                  {marks}
+                </p>
+
+                <p className="flex  items-center gap-2">
+                  <IoBarChart />
+                  <span className="font-semibold">Difficulty Level: </span>
+                  {difficulty}
                 </p>
               </div>
             </div>
-
-            {/* marks and difficulty row  */}
-            <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
-              <p className="flex  items-center gap-2">
-                <IoIosBookmarks />
-                <span className="font-semibold">Marks: </span>
-                {marks}
-              </p>
-
-              <p className="flex  items-center gap-2">
-                <IoBarChart />
-                <span className="font-semibold">Difficulty Level: </span>
-                {difficulty}
-              </p>
-            </div>
-
             {/* decription row  */}
             <p className="text-justify">
               <span className="font-semibold"> Description: </span>{" "}

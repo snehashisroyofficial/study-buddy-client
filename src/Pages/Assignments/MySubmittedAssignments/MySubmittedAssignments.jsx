@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { RotatingLines } from "react-loader-spinner";
 
 const MySubmittedAssignments = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [assignment, setAssignment] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     getData();
   }, [user]);
@@ -16,7 +17,26 @@ const MySubmittedAssignments = () => {
       `/my-submitted-assignments/${user?.email}`
     );
     setAssignment(data);
+    setLoading(false);
   };
+
+  if (loading) {
+    return (
+      <div className="h-dvh flex justify-center items-center">
+        <RotatingLines
+          visible={true}
+          height="96"
+          width="96"
+          color="grey"
+          strokeWidth="5"
+          animationDuration="0.75"
+          ariaLabel="rotating-lines-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+        />
+      </div>
+    );
+  }
 
   if (assignment.length == 0) {
     return (

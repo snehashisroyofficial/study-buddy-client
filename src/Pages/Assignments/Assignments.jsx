@@ -14,11 +14,6 @@ const Assignments = () => {
 
   const [value, setValue] = useState("all");
   const [filterData, setfilterData] = useState([]);
-  //pagination
-  const [currentPage, setcurrentPage] = useState(0);
-  const [itemsperPage, setitemsPerPage] = useState(3);
-  const numberOfPages = Math.ceil(filterData.length / itemsperPage);
-  const pages = [...Array(numberOfPages).keys()];
 
   useEffect(() => {
     if (value === "all") {
@@ -77,27 +72,8 @@ const Assignments = () => {
     });
   };
 
-  const handleItemsPerPage = (e) => {
-    const value = parseInt(e.target.value);
-    console.log(value);
-    setitemsPerPage(value);
-    setcurrentPage(0);
-  };
-
-  const handlePriviousPage = () => {
-    if (currentPage > 0) {
-      setcurrentPage(currentPage - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < pages.length - 1) {
-      setcurrentPage(currentPage + 1);
-    }
-  };
-
   return (
-    <div className="py-10">
+    <div className="py-10 px-4">
       <h1 className="text-3xl font-bold text-center mb-8">All Assignments</h1>
 
       {/* difficulty level  */}
@@ -124,7 +100,7 @@ const Assignments = () => {
         </select>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 ">
         {filterData.map((item) => (
           <div
             key={item._id}
@@ -181,48 +157,6 @@ const Assignments = () => {
             </div>
           </div>
         ))}
-      </div>
-      <div className=" py-16 flex justify-center items-center flex-col">
-        <p>Current page is {currentPage}</p>
-
-        <div>
-          <button
-            onClick={handlePriviousPage}
-            className="px-4 py-2 rounded-xl bg-blue-300"
-          >
-            Privious
-          </button>
-          {pages.map((page) => (
-            <button
-              onClick={() => setcurrentPage(page)}
-              key={page}
-              className={` mx-4 px-4 py-2 rounded-xl ${
-                currentPage === page ? "bg-orange-500" : "bg-orange-100"
-              }`}
-            >
-              {page}
-            </button>
-          ))}
-          <select
-            name=""
-            id=""
-            value={itemsperPage}
-            onChange={handleItemsPerPage}
-          >
-            <option value="3">3</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-            <option value="40">40</option>
-            <option value="50">50</option>
-          </select>
-          <button
-            onClick={handleNextPage}
-            className="px-4 py-2 rounded-xl bg-blue-300"
-          >
-            Next
-          </button>
-        </div>
       </div>
     </div>
   );

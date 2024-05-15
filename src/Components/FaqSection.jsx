@@ -16,7 +16,7 @@ const FaqSection = () => {
               How do I create an assignment?
             </summary>
             <div className="px-4 pb-4">
-              <p className="text-lg">
+              <p className="text-base">
                 Step-by-step guide on crafting engaging assignments with clear
                 instructions and options for adding files or multimedia.
               </p>
@@ -28,7 +28,7 @@ const FaqSection = () => {
               Who can see the assignments I create?
             </summary>
             <div className="px-4 pb-4">
-              <p className="text-lg">
+              <p className="text-base">
                 Explains privacy settings and options for sharing assignments
                 publicly or with specific users.
               </p>
@@ -40,7 +40,7 @@ const FaqSection = () => {
               How do I grade and give feedback on assignments?
             </summary>
             <div className="px-4 pb-4 space-y-2">
-              <p className="text-lg">
+              <p className="text-base">
                 Outlines the grading process, including rubrics, comment
                 sections, and file annotation tools (if available).
               </p>
@@ -52,7 +52,7 @@ const FaqSection = () => {
               Can I collaborate with others on an assignment?
             </summary>
             <div className="px-4 pb-4 space-y-2">
-              <p className="text-lg">
+              <p className="text-base">
                 Explains if team assignments are supported and how users can
                 collaborate during the creation process.
               </p>
@@ -63,7 +63,7 @@ const FaqSection = () => {
               How do I manage my account and privacy settings?
             </summary>
             <div className="px-4 pb-4 space-y-2">
-              <p className="text-lg">
+              <p className="text-base">
                 Provides information on editing user profiles, setting
                 preferences, and controlling how your information is shared.
               </p>
