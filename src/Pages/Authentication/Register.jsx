@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -10,6 +10,7 @@ const Register = () => {
   const [button, setButton] = useState(true);
   const { createUser } = useAuth();
   const [password, setPassword] = useState(false);
+  const navigate = useNavigate();
   const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{6,}$/;
   const {
     register,
@@ -34,7 +35,9 @@ const Register = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+
         reset();
+        navigate("/");
       })
       .catch((err) => toast.error(err.message));
   };

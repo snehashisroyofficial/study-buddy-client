@@ -9,18 +9,18 @@ const PendingAssignments = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [assignment, setAssignment] = useState([]);
-
-  useEffect(() => {
-    getData();
-  }, [user]);
-
   const getData = async () => {
     const { data } = await axiosSecure(`/pending-assignments/${user?.email}`);
     const filterData = data.filter((i) => i.status === "pending");
+    // Update state directly, no need to return
     setAssignment(filterData);
   };
 
-  console.log(assignment);
+  useEffect(() => {
+    getData();
+  }, []);
+
+  console.log(user);
 
   if (assignment.length == 0) {
     return (

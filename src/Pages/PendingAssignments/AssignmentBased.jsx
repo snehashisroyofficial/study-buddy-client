@@ -71,7 +71,7 @@ const AssignmentBased = () => {
       <div className="flex flex-col lg:flex-row  gap-4 p-4 ">
         <div className="lg:w-1/2 h-full space-y-4 ">
           <iframe
-            src="https://drive.google.com/file/d/1SIa-_eDQHfi1Rj58UeV8e93pcGz9IO_1/preview"
+            src={data.submitLink}
             title="testPdf"
             className="h-[500px] w-full"
           ></iframe>

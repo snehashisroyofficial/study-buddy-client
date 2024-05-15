@@ -1,3 +1,6 @@
+import { SiStudyverse } from "react-icons/si";
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="bg-white dark:bg-gray-900">
@@ -5,22 +8,20 @@ const Footer = () => {
         <div className="lg:flex">
           <div className="w-full -mx-6 lg:w-2/5">
             <div className="px-6">
-              <a href="#">
-                <img
-                  className="w-auto h-7"
-                  src="https://merakiui.com/images/full-logo.svg"
-                  alt=""
-                />
+              <a className="btn btn-ghost text-2xl text-orange-500  font-header">
+                <SiStudyverse className=" text-4xl" />
+                Study Buddy
               </a>
 
               <p className="max-w-sm mt-2 text-gray-500 dark:text-gray-400">
-                Join 31,000+ other and never miss out on new tips, tutorials,
-                and more.
+                Highlights the learning and collaborative aspects of the
+                platform.
               </p>
 
               <div className="flex mt-6 -mx-2">
                 <a
-                  href="#"
+                  target="_blank"
+                  href="https://www.reddit.com/user/CertainPosition8731/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button"
                   className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
                   aria-label="Reddit"
                 >
@@ -35,7 +36,8 @@ const Footer = () => {
                 </a>
 
                 <a
-                  href="#"
+                  target="_blank"
+                  href="https://www.facebook.com/Snehashisroy.official/"
                   className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
                   aria-label="Facebook"
                 >
@@ -50,7 +52,8 @@ const Footer = () => {
                 </a>
 
                 <a
-                  href="#"
+                  target="_blank"
+                  href="https://github.com/snehashisroyofficial"
                   className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
                   aria-label="Github"
                 >
@@ -73,72 +76,55 @@ const Footer = () => {
                 <h3 className="text-gray-700 uppercase dark:text-white">
                   About
                 </h3>
-                <a
+                <Link
+                  to="/aboutus"
                   href="#"
                   className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
                 >
-                  Company
-                </a>
-                <a
+                  About us
+                </Link>
+                <Link
+                  to="/contactus"
                   href="#"
                   className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
                 >
-                  community
-                </a>
-                <a
-                  href="#"
-                  className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
-                >
-                  Careers
-                </a>
+                  Contact us
+                </Link>
               </div>
 
               <div>
                 <h3 className="text-gray-700 uppercase dark:text-white">
-                  Blog
+                  Features
                 </h3>
-                <a
-                  href="#"
-                  className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
-                >
-                  Tec
-                </a>
-                <a
-                  href="#"
-                  className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
-                >
-                  Music
-                </a>
-                <a
-                  href="#"
-                  className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
-                >
-                  Videos
-                </a>
-              </div>
 
-              <div>
-                <h3 className="text-gray-700 uppercase dark:text-white">
-                  Products
-                </h3>
-                <a
+                <Link
+                  to="/assignments"
                   href="#"
                   className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
                 >
-                  Mega cloud
-                </a>
-                <a
+                  View all assignments
+                </Link>
+                <Link
+                  to="/create-assignments"
                   href="#"
                   className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
                 >
-                  Aperion UI
-                </a>
-                <a
+                  Create assignment
+                </Link>
+                <Link
+                  to="/pending-assignments"
                   href="#"
                   className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
                 >
-                  Meraki UI
-                </a>
+                  Pending assignments
+                </Link>
+                <Link
+                  to="/my-submitted-assignments"
+                  href="#"
+                  className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                >
+                  Submitted assignments
+                </Link>
               </div>
 
               <div>
@@ -146,10 +132,10 @@ const Footer = () => {
                   Contact
                 </h3>
                 <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
-                  +1 526 654 8965
+                  +91 9875623236
                 </span>
                 <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
-                  example@email.com
+                  bongradar@email.com
                 </span>
               </div>
             </div>
@@ -160,7 +146,7 @@ const Footer = () => {
 
         <div>
           <p className="text-center text-gray-500 dark:text-gray-400">
-            © Brand 2020 - All rights reserved
+            © StudyBuddy 2024 - All rights reserved
           </p>
         </div>
       </div>

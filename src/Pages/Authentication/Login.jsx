@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const { signInUser, googleLogin } = useAuth();
@@ -28,9 +29,9 @@ const Login = () => {
         });
 
         form.reset();
-        navigate(location.pathname ? location.pathname : "/");
+        navigate(location.state ? location.state : "/");
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
   };
 
   const handleGoogleLogin = () => {

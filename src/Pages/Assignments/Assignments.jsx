@@ -128,7 +128,7 @@ const Assignments = () => {
         {filterData.map((item) => (
           <div
             key={item._id}
-            className="relative w-full mx-auto border-2  border-black flex flex-col justify-between max-w-sm lg:max-w-xs  overflow-hidden bg-white shadow-lg dark:bg-gray-800"
+            className=" dark:bg-gray-700  dark:text-white relative w-full mx-auto border-2  border-black flex flex-col justify-between max-w-sm lg:max-w-xs  overflow-hidden bg-white shadow-lg dark:bg-gray-800"
           >
             <img
               className="object-cover w-full h-56"

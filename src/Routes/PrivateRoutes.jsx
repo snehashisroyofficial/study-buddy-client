@@ -5,6 +5,7 @@ import { RotatingLines } from "react-loader-spinner";
 const PrivateRoutes = ({ children }) => {
   const { user, loading } = useAuth();
   const location = useLocation();
+
   if (loading) {
     return (
       <div className="h-dvh flex justify-center items-center">

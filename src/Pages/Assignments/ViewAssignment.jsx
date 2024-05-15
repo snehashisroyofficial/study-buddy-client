@@ -99,9 +99,9 @@ const ViewAssignment = () => {
   }
 
   return (
-    <section className="py-16 flex justify-center items-center px-4">
+    <section className="py-16 flex justify-center items-center px-4 ">
       <div className="flex justify-center  ">
-        <div className="md:w-1/2  border-2 border-black flex ">
+        <div className="md:w-1/2  border-2 border-black flex dark:bg-gray-800  dark:text-white ">
           <div className="p-6 space-y-8">
             <img
               className="object-cover w-full h-28 md:h-56"

@@ -11,6 +11,8 @@ import MySubmittedAssignments from "../Pages/Assignments/MySubmittedAssignments/
 import PendingAssignments from "../Pages/PendingAssignments/PendingAssignments";
 import AssignmentBased from "../Pages/PendingAssignments/AssignmentBased";
 import UpdateAssignments from "../Pages/Assignments/UpdateAssignments";
+import AboutUs from "../Components/AboutUs";
+import ContactUs from "../Components/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
       {
         path: "/Register",
         element: <Register />,
+      },
+      {
+        path: "/aboutus",
+        element: <AboutUs />,
+      },
+      {
+        path: "/contactus",
+        element: <ContactUs />,
       },
       {
         path: "/create-assignments",
