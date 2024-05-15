@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 
 const AboutUs = () => {
   return (
-    <div className="space-y-6 py-16 px-4 dark:text-white">
+    <div data-aos="fade-up" className="space-y-6 py-16 px-4 dark:text-white">
       <Helmet>
         <title>About us</title>
       </Helmet>

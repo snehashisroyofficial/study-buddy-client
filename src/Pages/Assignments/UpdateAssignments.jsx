@@ -57,7 +57,7 @@ const UpdateAssignments = () => {
   };
 
   return (
-    <section className="py-10">
+    <section data-aos="fade-up" className="py-10">
       <Helmet>
         <title>Update Assignments</title>
       </Helmet>

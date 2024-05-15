@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 
 const ContactUs = () => {
   return (
-    <section className="  my-14 ">
+    <section data-aos="fade-up" className="  my-14 ">
       <Helmet>
         <title>Contact us</title>
       </Helmet>

@@ -3,7 +3,11 @@ import { MdOutlineTune } from "react-icons/md";
 import { HiOutlineSparkles } from "react-icons/hi";
 const Features = () => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section
+      data-aos="fade-up"
+      data-aos-anchor-placement="center-bottom"
+      className="bg-white dark:bg-gray-900"
+    >
       <div className="container px-6 py-10 mx-auto">
         <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
           Power of Collaboration

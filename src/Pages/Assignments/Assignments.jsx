@@ -108,6 +108,7 @@ const Assignments = () => {
         {filterData.map((item) => (
           <div
             key={item._id}
+            data-aos="flip-right"
             className=" dark:bg-gray-800  dark:text-white relative w-full mx-auto  flex flex-col justify-between max-w-sm lg:max-w-xs  overflow-hidden bg-white shadow-lg "
           >
             <img

@@ -100,7 +100,10 @@ const ViewAssignment = () => {
   }
 
   return (
-    <section className="py-16 flex justify-center items-center px-4 ">
+    <section
+      data-aos="fade-up"
+      className="py-16 flex justify-center items-center px-4 "
+    >
       <Helmet>
         <title>View Assignments</title>
       </Helmet>

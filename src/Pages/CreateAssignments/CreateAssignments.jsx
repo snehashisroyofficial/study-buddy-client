@@ -55,7 +55,7 @@ const CreateAssignments = () => {
   };
 
   return (
-    <section className="py-10">
+    <section data-aos="fade-up" className="py-10">
       <Helmet>
         <title>Create Assignments</title>
       </Helmet>

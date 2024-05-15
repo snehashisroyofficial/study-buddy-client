@@ -53,7 +53,7 @@ const PendingAssignments = () => {
   }
 
   return (
-    <section className="py-20">
+    <section data-aos="fade-up" className="py-20">
       <Helmet>
         <title>Pending Assignments</title>
       </Helmet>

@@ -47,7 +47,7 @@ const MySubmittedAssignments = () => {
     );
   }
   return (
-    <section className="py-20">
+    <section data-aos="fade-up" className="py-20">
       <Helmet>
         <title>Submitted Assignments</title>
       </Helmet>
