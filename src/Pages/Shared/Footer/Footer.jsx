@@ -6,14 +6,14 @@ const Footer = () => {
     <footer className="bg-white dark:bg-gray-900">
       <div className="container p-6 mx-auto">
         <div className="lg:flex">
-          <div className="w-full -mx-6 lg:w-2/5">
-            <div className="px-6">
+          <div className="w-full  lg:w-2/5">
+            <div className="px-6 flex lg:block flex-col justify-center items-center ">
               <a className="btn btn-ghost text-2xl text-orange-500  font-header">
                 <SiStudyverse className=" text-4xl" />
                 Study Buddy
               </a>
 
-              <p className="max-w-sm mt-2 text-gray-500 dark:text-gray-400">
+              <p className="max-w-sm mt-2 text-center md:text-left text-gray-500 dark:text-gray-400">
                 Highlights the learning and collaborative aspects of the
                 platform.
               </p>
