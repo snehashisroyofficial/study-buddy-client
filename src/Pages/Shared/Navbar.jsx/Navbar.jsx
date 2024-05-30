@@ -186,6 +186,12 @@ const Navbar = () => {
               >
                 Attempted Assignments
               </NavLink>
+              <NavLink
+                className="w-full py-2 text-sm text-center bg-blue-100/60  dark:bg-blue-700 dark:text-white font-bold text-blue-600 rounded-md"
+                to="/forgetpassword"
+              >
+                Forget Password
+              </NavLink>
 
               <button
                 onClick={handleSignout}

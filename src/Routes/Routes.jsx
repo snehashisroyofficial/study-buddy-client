@@ -13,11 +13,14 @@ import AssignmentBased from "../Pages/PendingAssignments/AssignmentBased";
 import UpdateAssignments from "../Pages/Assignments/UpdateAssignments";
 import AboutUs from "../Components/AboutUs";
 import ContactUs from "../Components/ContactUs";
+import ErrorPage from "../Pages/Shared/ErrorPage";
+import ForgetPassword from "../Components/ForgetPassword";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -26,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/forgetpassword",
+        element: <ForgetPassword />,
       },
       {
         path: "/Register",
