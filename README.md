@@ -2,7 +2,7 @@
 
 ## [ Study Buddy - Empowering Learning with Collaborative Grading](https://assignment-11-bd695.web.app/)
 
-Website Name : Taj Travel
+Website Name : Study Buddy
 
 Live Website Link : https://assignment-11-bd695.web.app/
 
