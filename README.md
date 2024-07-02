@@ -1,5 +1,3 @@
-# ASSIGNMENT - 11 (Study Buddy)
-
 ## [ Study Buddy - Empowering Learning with Collaborative Grading](https://assignment-11-bd695.web.app/)
 
 Website Name : Study Buddy
