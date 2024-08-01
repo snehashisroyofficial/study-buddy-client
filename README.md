@@ -1,8 +1,8 @@
-# ASSIGNMENT - 11 (Study Buddy)
-
 ## [ Study Buddy - Empowering Learning with Collaborative Grading](https://assignment-11-bd695.web.app/)
 
-Website Name : Taj Travel
+Website Name : Study Buddy
+
+Description: StudyBuddy - A platform where users can post assignments, apply for them, and receive grades. Streamlining assignment management and evaluations for an efficient experience.
 
 Live Website Link : https://assignment-11-bd695.web.app/
 
